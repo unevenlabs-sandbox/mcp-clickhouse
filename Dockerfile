@@ -14,10 +14,8 @@ ENV UV_LINK_MODE=copy
 RUN apt-get update && apt-get install -y --no-install-recommends git build-essential && rm -rf /var/lib/apt/lists/*
 
 # Install the project's dependencies using the lockfile and settings
-RUN --mount=type=bind,source=uv.lock,target=uv.lock \
-    --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
-    --mount=type=bind,source=README.md,target=README.md \
-    uv sync --locked --no-install-project --no-dev
+COPY uv.lock pyproject.toml README.md ./
+RUN uv sync --locked --no-install-project --no-dev
 
 # Then, add the rest of the project source code and install it
 # Installing separately from its dependencies allows optimal layer caching
