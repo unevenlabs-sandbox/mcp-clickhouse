@@ -10,7 +10,8 @@ VPN-gated ClickHouse cluster.
 - `flyctl` installed (`brew install flyctl`)
 - `fly auth login` complete
 - An app already created: `fly apps create <app-name> --org <org>`
-  - The current production app is `mcp-clickhouse-unevenlabs` in the `personal` org
+  - The current production app is `mcp-clickhouse-unevenlabs` in the shared
+    Relay org (slug `relay-539`)
 - The `app` field in `fly.toml` matches the app you created
 
 ## Required secrets
